@@ -23,6 +23,13 @@ public class WalkStairs {
     }
 
     @Test
+    public void test3() {
+        int n = 10;//测试fun2的正确性，n依次取值：1,2，3,10,15
+        System.out.println("fun2:" + fun(n));
+        System.out.println("fun3:" + fun3(n));
+    }
+
+    @Test
     public void compare() {
         int n = 40;//对比分析两种计算方式消耗的时间
         long start1 = System.currentTimeMillis();
@@ -31,6 +38,9 @@ public class WalkStairs {
         long start2 = System.currentTimeMillis();
         System.out.println("fun2:" + fun2(n));
         System.out.println("fun2 time:" + (System.currentTimeMillis() - start2));
+        long start3 = System.currentTimeMillis();
+        System.out.println("fun3:" + fun2(n));
+        System.out.println("fun3 time:" + (System.currentTimeMillis() - start3));
     }
 
 
@@ -73,6 +83,30 @@ public class WalkStairs {
         int count = count1 + count2;
         arrays[n] = count;
         return count;
+    }
+
+    /**
+     * 非递归写法
+     *
+     * @param n
+     * @return
+     */
+    public int fun3(int n) {
+        if (n == 1) {
+            return 1;
+        }
+        if (n == 2) {
+            return 2;
+        }
+        int ret = 0;
+        int pre = 2;
+        int prepre = 1;
+        for (int i = 3; i <= n; i++) {
+            ret = pre + prepre;
+            prepre = pre;
+            pre = ret;
+        }
+        return ret;
     }
 
 
