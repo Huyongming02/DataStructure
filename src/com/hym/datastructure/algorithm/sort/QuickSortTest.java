@@ -27,7 +27,7 @@ public class QuickSortTest {
         }
         print(array, "org:");
 
-        int index = 3;
+        int index = 5;
         System.out.println("the " + index + "th:" + QuickSort.getMaxK(array, index));
 
         print(array, "sorted:");

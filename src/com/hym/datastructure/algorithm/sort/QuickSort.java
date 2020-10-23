@@ -94,6 +94,6 @@ public class QuickSort {
                 return sort(a, left, low - 1, index);
             }
         }
-        return Integer.MIN_VALUE;
+        return a[left];
     }
 }
