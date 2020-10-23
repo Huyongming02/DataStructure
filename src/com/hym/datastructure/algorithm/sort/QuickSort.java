@@ -55,4 +55,45 @@ public class QuickSort {
             }
         }
     }
+
+    /**
+     * 在O(n)的时间复杂度内找出无序数组中的第K大数
+     *
+     * @param array
+     * @param k
+     */
+    public static int getMaxK(int[] array, int k) {
+        if (array == null || array.length < k) {
+            return Integer.MIN_VALUE;
+        }
+        return sort(array, 0, array.length - 1, array.length - k);//计算第k大数在序列中的位置：array.length - k
+    }
+
+    private static int sort(int[] a, int left, int right, int index) {
+        if (left < right) {
+            int low = left;
+            int hight = right;
+            int pivot = a[low];
+            //找到分区点的位置
+            while (low < hight) {
+                while (low < hight && a[hight] >= pivot) {
+                    hight--;
+                }
+                a[low] = a[hight];
+                while (low < hight && a[low] <= pivot) {
+                    low++;
+                }
+                a[hight] = a[low];
+            }
+            a[low] = pivot;
+            if (low == index) {//分区点的位置就是要查找的第K大数
+                return pivot;
+            } else if (low < index) {//分区点的位置在要查找的位置的左边
+                return sort(a, low + 1, right, index);
+            } else if (low > index) {//分区点的位置在要查找的位置的右边
+                return sort(a, left, low - 1, index);
+            }
+        }
+        return Integer.MIN_VALUE;
+    }
 }
