@@ -3,7 +3,7 @@ package com.hym.datastructure.algorithm.sort;
 /**
  * 桶排序
  */
-public class BucketSortPerson {
+public class BucketSortRecord {
 
     public static void sort(Record[] array, int bucketSize) {
         if (array == null || array.length < 2) {
@@ -117,7 +117,7 @@ public class BucketSortPerson {
 
     public static class Record {
         private int money;
-        private String name;
+        private String id;
 
         public int getMoney() {
             return money;
@@ -127,19 +127,19 @@ public class BucketSortPerson {
             this.money = money;
         }
 
-        public String getName() {
-            return name;
+        public String getId() {
+            return id;
         }
 
-        public void setName(String name) {
-            this.name = name;
+        public void setId(String id) {
+            this.id = id;
         }
 
         @Override
         public String toString() {
             return "{" +
                     "money=" + money +
-                    ", name='" + name + '\'' +
+                    ", name='" + id + '\'' +
                     '}';
         }
     }
