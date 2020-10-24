@@ -21,13 +21,13 @@ public class BucketSortTest {
         print(array, "   org:");
         print(array2, "   org:");
         BucketSort.sort(array, 5);
-        QuickSort.sort(array2);
+        MergeSort.sort(array2);
         print(array, "sorted:");
         print(array2, "sorted:");
     }
 
     /**
-     * 与快排对比速度
+     * 与归并对比速度（归并排序的时间复杂度稳定为O(nlogn)）
      */
     @Test
     public void test2() {
@@ -44,8 +44,8 @@ public class BucketSortTest {
         System.out.println("bucketSort time:" + (System.currentTimeMillis() - bucketSortStartTime));
 
         long quickSortStartTime = System.currentTimeMillis();
-        QuickSort.sort(array2);
-        System.out.println(" QuickSort time:" + (System.currentTimeMillis() - quickSortStartTime));
+        MergeSort.sort(array2);
+        System.out.println(" MergeSort time:" + (System.currentTimeMillis() - quickSortStartTime));
     }
 
     private static void print(int[] array, String s) {
