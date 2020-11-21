@@ -16,7 +16,7 @@ public class CalQueenTest {
             StringBuilder builder = new StringBuilder();
             for (int j = 0; j < size; j++) {
                 if (locations[i] == j) {
-                    builder.append(" & ");
+                    builder.append(" Q ");
                 } else {
                     builder.append(" * ");
                 }
