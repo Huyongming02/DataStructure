@@ -1,4 +1,4 @@
-package com.hym.datastructure.algorithm.traceback;
+package com.hym.datastructure.algorithm.backtrack;
 
 /**
  * 计算n皇后问题

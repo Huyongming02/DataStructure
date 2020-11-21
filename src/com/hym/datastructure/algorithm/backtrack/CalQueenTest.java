@@ -1,4 +1,4 @@
-package com.hym.datastructure.algorithm.traceback;
+package com.hym.datastructure.algorithm.backtrack;
 
 import org.junit.Test;
 
