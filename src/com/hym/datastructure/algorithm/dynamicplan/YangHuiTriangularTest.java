@@ -18,8 +18,12 @@ public class YangHuiTriangularTest {
             }
         }
         print(weights, "");
+        //动态规划
         int min = YangHuiTriangular.count(weights);
-        System.out.println("min:" + min);
+        System.out.println("动态规划:" + min);
+        //回溯
+        int min2 = YangHuiTriangular.count2(weights);
+        System.out.println("回溯:" + min2);
     }
 
     private static void print(int[][] weights, String des) {
@@ -27,7 +31,7 @@ public class YangHuiTriangularTest {
         for (int i = 0; i < weights.length; i++) {
             StringBuilder builder = new StringBuilder();
             int num = weights.length - i;
-            for (int k = 0; k < (num-1) / 2; k++) {
+            for (int k = 0; k < (num - 1) / 2; k++) {
                 builder.append("   " + " " + "   ");
             }
             if (i % 2 != 0) {
@@ -39,7 +43,7 @@ public class YangHuiTriangularTest {
             System.out.println(builder.toString());
             if (i < weights.length - 1) {
                 StringBuilder builder2 = new StringBuilder();
-                for (int k = 0; k < (num-1) / 2; k++) {
+                for (int k = 0; k < (num - 1) / 2; k++) {
                     builder2.append("   " + " " + "   ");
                 }
                 if (i % 2 != 0) {
