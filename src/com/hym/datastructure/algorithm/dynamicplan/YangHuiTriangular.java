@@ -2,15 +2,18 @@ package com.hym.datastructure.algorithm.dynamicplan;
 
 /**
  * 类似杨辉三角的图形，求从顶点到最底边的最短路径
- * 1
- * / \
- * 6      2
- * / \    / \
- * 4      1      2
- * / \    / \    / \
- * 5      5      2      1
- * / \    / \    / \    / \
- * 6      3      4      3      7
+ */
+
+/*
+ *                  1
+ *                 / \
+ *               5      4
+ *              / \    / \
+ *           2      3      6
+ *          / \    / \    / \
+ *        4      6      1      2
+ *       / \    / \    / \    / \
+ *    6      1      3      1      5
  */
 public class YangHuiTriangular {
     /**
