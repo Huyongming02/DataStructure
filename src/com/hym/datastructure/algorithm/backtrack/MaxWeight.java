@@ -10,7 +10,7 @@ public class MaxWeight {
     }
 
     private static void countMax(int[] goods, int max, int current, int currentWeight) {
-        if (current == goods.length) {//所有商品的选择都做完了
+        if (current == goods.length || currentWeight == max) {//所有商品的选择都做完了或者背包已经装满了
             if (currentWeight > mMaxWeight) {
                 mMaxWeight = currentWeight;
             }
@@ -21,10 +21,6 @@ public class MaxWeight {
         //选择当前商品
         if (currentWeight + goods[current] <= max) {//选择当前商品之后，没有超过最大重量
             countMax(goods, max, current + 1, currentWeight + goods[current]);
-        } else {//选择当前商品之后，超过了最大重量
-            if (currentWeight > mMaxWeight) {
-                mMaxWeight = currentWeight;
-            }
         }
     }
 
