@@ -14,7 +14,7 @@ package com.hym.datastructure.algorithm.dynamicplan;
  */
 public class YangHuiTriangular {
     /**
-     * 状态转移公式：values[i][k]=Math.min(valuse[i-1][k-1],valuse[i-1][k])+weights[i][k]
+     * 动态规划：状态转移公式：values[i][k]=Math.min(valuse[i-1][k-1],valuse[i-1][k])+weights[i][k]
      */
     public static int count(int[][] weights) {
         if (weights == null || weights.length == 0 || weights[0].length == 0) {
@@ -50,6 +50,12 @@ public class YangHuiTriangular {
 
     private static int mMin = Integer.MAX_VALUE;
 
+    /**
+     * 回溯实现
+     *
+     * @param weights
+     * @return
+     */
     public static int count2(int[][] weights) {
         mMin = Integer.MAX_VALUE;
         if (weights == null || weights.length == 0 || weights[0].length == 0) {
