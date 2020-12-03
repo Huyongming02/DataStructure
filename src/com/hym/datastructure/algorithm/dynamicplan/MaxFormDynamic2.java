@@ -1,6 +1,6 @@
 package com.hym.datastructure.algorithm.dynamicplan;
 
-public class MaxFormDynamic {
+public class MaxFormDynamic2 {
 
     public static int findMaxForm(String[] strs, int m, int n) {
         if (strs == null || strs.length == 0) {
@@ -27,18 +27,18 @@ public class MaxFormDynamic {
             }
         }
         //记录状态值
-        int[][][] flags = new int[size][m + 1][n + 1];
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j <= m; j++) {
-                for (int k = 0; k <= n; k++) {
-                    flags[i][j][k] = -1;
-                }
+        int[][] flags = new int[m + 1][n + 1];
+        for (int j = 0; j <= m; j++) {
+            for (int k = 0; k <= n; k++) {
+                flags[j][k] = -1;
             }
         }
-        //第0阶段的状态
-        flags[0][0][0] = 0;
-        if (zeroSums[0] <= m && oneSums[0] <= n) {
-            flags[0][zeroSums[0]][oneSums[0]] = 1;
+        //初始化：每个阶段在其他阶段都不选的情况下可达的状态和对应的值
+        for (int i = 0; i < size; i++) {
+            flags[0][0] = 0;
+            if (zeroSums[i] <= m && oneSums[i] <= n) {
+                flags[zeroSums[i]][oneSums[i]] = 1;
+            }
         }
         /**
          * 状态转移公式：
@@ -48,13 +48,10 @@ public class MaxFormDynamic {
         for (int i = 1; i < size; i++) {
             for (int j = 0; j <= m; j++) {
                 for (int k = 0; k <= n; k++) {
-                    if (flags[i - 1][j][k] >= 0) {
-                        if (flags[i - 1][j][k] > flags[i][j][k]) {
-                            flags[i][j][k] = flags[i - 1][j][k];
-                        }
+                    if (flags[j][k] >= 0) {
                         if (j + zeroSums[i] <= m && k + oneSums[i] <= n) {
-                            if (flags[i - 1][j][k]  > flags[i][j + zeroSums[i]][k + oneSums[i]]) {
-                                flags[i][j + zeroSums[i]][k + oneSums[i]] = flags[i - 1][j][k] + 1;
+                            if (flags[j][k] + 1 > flags[j + zeroSums[i]][k + oneSums[i]]) {
+                                flags[j + zeroSums[i]][k + oneSums[i]] = flags[j][k] + 1;
                             }
                         }
                     }
@@ -65,8 +62,8 @@ public class MaxFormDynamic {
         int max = -1;
         for (int j = 0; j <= m; j++) {
             for (int k = 0; k <= n; k++) {
-                if (flags[size - 1][j][k] > max) {
-                    max = flags[size - 1][j][k];
+                if (flags[j][k] > max) {
+                    max = flags[j][k];
                 }
             }
         }
